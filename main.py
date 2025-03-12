@@ -54,25 +54,41 @@ def main():
                 # Handle any unexpected algorithm names
                 print(f"Unknown algorithm: {algorithm}")
 
-        print(stats['JoyStream'])
-   
+        largest_algorithm_avg =0
+        largest_algorithm_happiness=""
+        largest_algorithm_duration=0
+        largest_algorithm_length=""
     # TODO: Calculate averages for each algorithm
-    # For each algorithm in the stats dictionary:
-    #avg_happiness = total_happiness / session_count
-    #   - Calculate avg_duration = total_duration / session_count
-    #   - Store these back into the stats dictionary under 'avg_happiness' and 'avg_duration'
+    #print(stats['JoyStream'].get('total_happiness'))
+    print("Average Happiness Rating per Algorithm:")
+    for algorithm,algorithm_stats in stats.items():
+        algorithm_avg= algorithm_stats['total_happiness']/algorithm_stats['session_count']
+        
+        print(f"-{algorithm}: {algorithm_avg}")
+        if largest_algorithm_avg<algorithm_avg:
+            largest_algorithm_avg=algorithm_avg
+            largest_algorithm_happiness= algorithm
+    print("\n")
+    print("Total Number of Sessions per Algorithm:")
+    for algorithm,algorithm_stats in stats.items():
+        algorithm_sessions= algorithm_stats['session_count']
+        
+        print(f"-{algorithm}: {algorithm_sessions}")
+    print("\n")
+    for algorithm,algorithm_stats in stats.items():
+        algorithm_duration= algorithm_stats['total_duration']/algorithm_stats['session_count']
+        
+        print(f"-{algorithm}: {algorithm_duration}")
+        if largest_algorithm_duration<algorithm_duration:
+            largest_algorithm_duration=algorithm_duration
+            largest_algorithm_length= algorithm
+    print("\n")
+    print("Highest Average Happiness Rating:")
+    print(f"-{largest_algorithm_happiness} with an average happiness rating of {largest_algorithm_avg}")
 
-    # TODO: Determine the algorithm with the highest average happiness rating
-    # Initialize variables to keep track of the highest average happiness and the corresponding algorithm
-    # Loop through stats to compare avg_happiness values
+    print("\nLongest Average Session Duration:")
+    print(f"-{largest_algorithm_length} with an average session duration of {largest_algorithm_duration} minutes")
 
-    # TODO: Determine the algorithm with the longest average session duration
-    # Initialize variables to keep track of the longest average duration and the corresponding algorithm
-    # Loop through stats to compare avg_duration values
-
-    # TODO: Print the report
-    # Use print statements to display the results in a formatted way
-    # Follow the structure provided in the example output
 
 if __name__ == "__main__":
     main()
