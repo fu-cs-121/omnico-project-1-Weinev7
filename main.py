@@ -41,10 +41,9 @@ def main():
             user_id = columns[0]
             algorithm = columns[1]
 
-            # TODO: Define session_duration and happiness_rating variables and convert them to integers
-            # Hint: Use the int() function to convert strings to integers
-            # session_duration = ?
-            # happiness_rating = ?
+            
+            session_duration = int(columns[2])
+            happiness_rating = int(columns[3])
 
             # Update stats based on the algorithm
             if algorithm in stats:
@@ -55,9 +54,11 @@ def main():
                 # Handle any unexpected algorithm names
                 print(f"Unknown algorithm: {algorithm}")
 
+        print(stats['JoyStream'])
+   
     # TODO: Calculate averages for each algorithm
     # For each algorithm in the stats dictionary:
-    #   - Calculate avg_happiness = total_happiness / session_count
+    #avg_happiness = total_happiness / session_count
     #   - Calculate avg_duration = total_duration / session_count
     #   - Store these back into the stats dictionary under 'avg_happiness' and 'avg_duration'
 
